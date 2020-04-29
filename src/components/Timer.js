@@ -15,7 +15,6 @@ const Timer = ({
     return (
         <div>
             <h1>Timer:</h1>
-            <h2>{timerLengthInMinutes}</h2>
             <button onClick={decrementTimerLength}>-</button>
             <button onClick={incrementTimerLength}>+</button>
         </div>
