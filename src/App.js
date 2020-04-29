@@ -1,31 +1,33 @@
 import React, {useState} from 'react';
 import './App.css';
-import Session from "./components/Session";
+import Timer from "./components/Timer";
+import TimeLeft from "./components/TimeLeft";
 
 function App() {
-    const [sessionLength, setSessionLength] = useState(60 * 20); // assign initial state to be 300 seconds which represent 5 minutes
+    const [timerLength, setTimerLength] = useState(60 * 20); // assign initial state to be 300 seconds which represent 5 minutes
 
-    const decrementSessionLength = () => {
-        const newSessionLength = sessionLength - 60;
+    const decrementTimerLength = () => {
+        const newTimerLength = timerLength - 60;
         // avoid going down below 0
-        if (newSessionLength < 0) {
-            setSessionLength(0);
+        if (newTimerLength < 0) {
+            setTimerLength(0);
         } else {
-            setSessionLength(sessionLength - 60);
+            setTimerLength(timerLength - 60);
         }
     };
 
-    const incrementSessionLength = () => {
-        setSessionLength(sessionLength + 60);
+    const incrementTimerLength = () => {
+        setTimerLength(timerLength + 60);
     };
 
     return (
     <div className="App">
-        <Session
-            // pass these variables from App component to Session
-            sessionLength={sessionLength}
-            decrementSessionLength={decrementSessionLength}
-            incrementSessionLength={incrementSessionLength}
+        <TimeLeft timerLength={timerLength} />
+        <Timer
+            // pass these variables from App component to Timer
+            timerLength={timerLength}
+            decrementTimerLength={decrementTimerLength}
+            incrementTimerLength={incrementTimerLength}
         />
     </div>
   );
