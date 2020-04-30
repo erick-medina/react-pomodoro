@@ -1,22 +1,16 @@
 import React from "react";
-import moment from "moment";
 
 const Timer = ({
                     // destructure props
-                     timerLength,
                      decrementTimerLength,
                      incrementTimerLength,
+                      handleDisabled
                  }) => {
-    // convert seconds to minutes through the moment library
-    const timerLengthInMinutes = moment
-        .duration(timerLength, "s")
-        .minutes();
-
     return (
         <div>
             <h1>Timer:</h1>
-            <button onClick={decrementTimerLength}>-</button>
-            <button onClick={incrementTimerLength}>+</button>
+            <button disabled={handleDisabled} onClick={decrementTimerLength}>-</button>
+            <button disabled={handleDisabled} onClick={incrementTimerLength}>+</button>
         </div>
     );
 };
