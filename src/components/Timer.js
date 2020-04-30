@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Timer = ({
                     // destructure props
@@ -7,11 +8,16 @@ const Timer = ({
                       handleDisabled
                  }) => {
     return (
-        <div>
-            <h1>Timer:</h1>
-            <button disabled={handleDisabled} onClick={decrementTimerLength}>-</button>
-            <button disabled={handleDisabled} onClick={incrementTimerLength}>+</button>
-        </div>
+        <Container>
+            <Row className='plus-minus-sign'>
+                <Col sm={6}>
+                    <button className='btn btn-outline-danger btn-lg' disabled={handleDisabled} onClick={decrementTimerLength}>-</button>
+                </Col>
+                <Col sm={6}>
+                    <button className='btn btn-outline-danger btn-lg' disabled={handleDisabled} onClick={incrementTimerLength}>+</button>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

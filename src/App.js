@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import Timer from "./components/Timer";
 import TimeLeft from "./components/TimeLeft";
+import {BreakMessage} from "./components/BreakMessage";
 
 function App() {
     const [timerLength, setTimerLength] = useState(60 * 20); // assign initial state to be 300 seconds which represent 5 minutes
@@ -61,6 +62,7 @@ function App() {
         setIntervalId(null);
         // reset Timer
         setTimerLength(60 * 20);
+        setTimeLeft(60 * 20);
         // enable buttons + and -
         setDisabled(true);
     };
@@ -71,6 +73,11 @@ function App() {
 
     return (
         <div className="App">
+            <TimeLeft timerLength={timerLength}
+                      handleStartandStopButton={handleStartandStopButton}
+                      startStopButtonLabel={isStarted ? 'Stop' : 'Start'}
+                      timeLeft={timeLeft}
+            />
             <Timer
                 // pass these variables from App component to Timer
                 timerLength={timerLength}
@@ -78,12 +85,8 @@ function App() {
                 incrementTimerLength={incrementTimerLength}
                 handleDisabled={isStarted ? disabled : !disabled}
             />
-            <TimeLeft timerLength={timerLength}
-                      handleStartandStopButton={handleStartandStopButton}
-                      startStopButtonLabel={isStarted ? 'Stop' : 'Start'}
-                      timeLeft={timeLeft}
-            />
-            <button onClick={handleResetButton}>Reset</button>
+            <button className='btn btn-dark btn-lg' onClick={handleResetButton}>Reset</button>
+            <BreakMessage />
         </div>
     );
 }
