@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import momentDurationFormat from 'moment-duration-format';
 import { Container, Row, Col } from 'react-bootstrap';
+import {BreakMessage} from "./BreakMessage";
 
 momentDurationFormat(moment); // call plugin moment-duration
 
@@ -11,14 +12,15 @@ const TimeLeft = ({
 
     // variable to transform seconds to mm:ss
     const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss', {trim: false}); // trim to add 00 after decreasing 1 minute
-
+    if (timeLeft === 0) {
+        return <BreakMessage />
+    }
     return (
         <Container>
             <Row className='pt-4 pomodoro-section'>
                 <Col>
                     <h1 className='pomodoro-title'>Pomodoro Timer</h1>
                 </Col>
-                
             </Row>
             <Row>
                 <h1>{timerLabel}</h1>

@@ -86,7 +86,6 @@ function App() {
                 handleDisabled={isStarted ? disabled : !disabled}
             />
             <button className='btn btn-dark btn-lg' onClick={handleResetButton}>Reset</button>
-            <BreakMessage />
         </div>
     );
 }
